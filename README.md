@@ -1,5 +1,5 @@
 ### 1. Objective-C Classes
-
+//Natalia made a change here//
 You are provided with a `Person` class. This class has private properties `name`, `phoneNumber` and `city`, along with their getter and setter methods.
 
 * Write a method called `checkSameCity` which accepts one parameter of type `Person *` and checks if they live in the same city. The method should return a boolean value.
