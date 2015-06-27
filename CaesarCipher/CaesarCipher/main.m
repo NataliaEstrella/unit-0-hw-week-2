@@ -53,21 +53,34 @@
     
     //    My Codesaster
 }
+//- (BOOL) codeBreaker:(NSString *)stringA also:(NSString *)stringB {
+//
+//    for (int i = 1; i < 25; i++) {
+//        NSString *decodedStringA = [self decode:stringA offset:i];
+//
+//        for (int j = 1; j < 25; j++) {
+//            NSString *decodedStringB = [self decode:stringB offset:j];
+//
+//            if ([decodedStringA isEqualToString:decodedStringB]) {
+//                return YES;
+//            }
+//        }
+//    }
+//    return NO;
+//}
+
+// OMG so I ran it over and over agin with the breakpoints and i realized one loop wasnt doing anything so i got rid of it!
 - (BOOL) codeBreaker:(NSString *)stringA also:(NSString *)stringB {
-    
-    for (int i = 1; i < 25; i++) {
+    for (int i = 1; i <= 25; i++) {
         NSString *decodedStringA = [self decode:stringA offset:i];
         
-        for (int j = 1; j < 25; j++) {
-            NSString *decodedStringB = [self decode:stringB offset:j];
-            
-            if ([decodedStringA isEqualToString:decodedStringB]) {
-                return YES;
-            }
+        if ([decodedStringA isEqualToString:stringB]) {
+            return YES;
         }
     }
     return NO;
 }
+
 @end
 
 
@@ -78,11 +91,18 @@ int main(int argc, const char * argv[]) {
     
     CaesarCipher *cipher = [[CaesarCipher alloc] init];
     
-    NSLog(@"%@", [cipher encode:@"natalia" offset:2]);
-    NSLog(@"%@", [cipher encode:@"natalia" offset:3]);
+    //    NSLog(@"%@", [cipher encode:@"natalia" offset:2]);
+    //    NSLog(@"%@", [cipher encode:@"natalia" offset:3]);
+    
+        NSLog(@"%@", [cipher encode:@"fart" offset:2]);
+        NSLog(@"%@", [cipher encode:@"fart" offset:3]);
     
     
-    BOOL stringAEqualToStringB = [cipher codeBreaker:@"pcvcnkc" also:@"qdwdolo"];
+    BOOL stringAEqualToStringB = [cipher codeBreaker:@"ab" also:@"bc"];
     NSLog(@"%@", @(stringAEqualToStringB));
     
+    NSLog(@"%@", @([cipher codeBreaker:@"hctv" also:@"iduw"]));
+    
+//    False tests 
+    NSLog(@"%@", @([cipher codeBreaker:@"hctv" also:@"idun"]));
 }
