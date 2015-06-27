@@ -16,7 +16,7 @@
 @interface Contender : NSObject
 
 - (instancetype)initWithName:(NSString *)name;
-    
+
 - (void)addVote;
 - (NSInteger)votesReceived;
 - (NSString *)name;
@@ -87,9 +87,9 @@
 }
 
 - (void)addContender:(Contender *)contender {
-   if (_listOfContenders == nil) {
-       _listOfContenders = [[NSMutableArray alloc] init];
-   }
+    if (_listOfContenders == nil) {
+        _listOfContenders = [[NSMutableArray alloc] init];
+    }
     [_listOfContenders addObject:contender];
 }
 
@@ -146,7 +146,7 @@
             printf("Contender does not exist...\n");
         }
     }
-        
+    
 }
 
 @end
@@ -205,6 +205,33 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        
+        // 1. Create an Election object, and given the Election a name
+        
+        Election *election2012 = [[Election alloc] initWithElectionName:@"Election2012"];
+        
+        //        2. Create a few Contender objects. Add these to the Election object. Make sure that the contender names are distinct!
+        
+        Contender *contenderNatalia = [[Contender alloc] initWithName:@"Natalia"];
+        Contender *contenderMaria =  [[Contender alloc] initWithName:@"Maria"];
+        Contender *conderNancy = [[Contender alloc] initWithName:@"Nancy"];
+        
+        [election2012 addContender:contenderNatalia];
+        [election2012 addContender:contenderMaria];
+        [election2012 addContender:conderNancy];
+        
+        //        3. Create a ElectionManager object. Ask it to manage the Election object created above.
+        ElectionManager *manager = [[ElectionManager alloc] init];
+        [manager manage:election2012];
+        
+        //        4. Ask the ElectionManager to initiatePolling
+        [manager initiatePolling];
+        
+        //        5. Follow the instructions on the console. After each round of polling you will be asked(within the console) whether you want to continue or not.
+        //        So Much Fun!
+        
+        //        6. Ask the ElectionManager to displayResults.
+        [manager displayResults];
         
     }
     return 0;
